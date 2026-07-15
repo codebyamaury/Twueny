@@ -1,6 +1,6 @@
 <div align="center">
   <br>
-  <img src="https://via.placeholder.com/150/06080f/09817C?text=TWUENY" alt="Twueny Header" width="200"/>
+  <img src="https://placehold.co/150x150/06080f/09817C?text=TWUENY" alt="Twueny Header" width="150" style="border-radius:24px;"/>
   <h1>Twueny</h1>
   <p><strong>La nueva forma de encontrar pareja. 🚀</strong><br>Deja de deslizar. Empieza a hablar.</p>
 </div>
