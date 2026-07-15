@@ -16,10 +16,6 @@
 
 <br>
 
-<p align="center">
-  <i>Landing page premium diseñada para convertir, con animaciones 3D, partículas interactivas y un diseño <strong>Dark Mode</strong> sofisticado.</i>
-</p>
-
 ---
 
 ## ✨ Características Principales
