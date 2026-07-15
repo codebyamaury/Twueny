@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twueny — Encuentra una cita en 15 minutos, no en 3 meses</title>
+    <meta name="description" content="Sin deslizar sin parar. Sin pagar por ver quién te dio like. Un algoritmo que te muestra 20 personas compatibles y un solo pago al año. Únete a la lista de espera y obtén 50% de descuento.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@800;900&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Anime.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Floating hearts background -->
+    <div id="floating-hearts" class="floating-hearts-container"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <a href="/" class="logo">
+            TWUEN<span class="logo-y">Y<svg class="logo-heart" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
+        </a>
+        <div class="nav-links">
+            <a href="#como-funciona">Cómo funciona</a>
+            <a href="#comparacion">Diferencias</a>
+            <a href="#faq">FAQ</a>
+        </div>
+        <a href="#waitlist" class="nav-cta">
+            <i class="fas fa-heart"></i> Unirme a la lista
+        </a>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero" id="hero">
+        <div class="hero-bg-orbs">
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+            <div class="orb orb-3"></div>
+        </div>
+        
+        <div class="hero-content">
+            <div class="hero-badge" id="hero-badge">
+                <span class="badge-dot"></span>
+                <span>La nueva forma de encontrar pareja</span>
+                <div class="badge-shimmer"></div>
+            </div>
+            <h1 id="hero-title">
+                <span class="line line-1">Deja de deslizar.</span>
+                <span class="line line-2">Empieza a <span class="gradient-text">hablar.</span></span>
+            </h1>
+            <p class="subheadline" id="hero-sub">
+                <strong>Twueny</strong> te muestra <span class="highlight-num">20</span> personas realmente compatibles en <span class="highlight-num">15 minutos</span>. Sin suscripción mensual. Sin pagar para ver quién está interesado en ti.
+            </p>
+            <div class="hero-actions">
+                <a href="#waitlist" class="btn-primary btn-glow" id="hero-cta">
+                    <i class="fas fa-rocket"></i> Unirme a la lista de espera
+                    <span class="btn-shine"></span>
+                </a>
+                <a href="#como-funciona" class="btn-ghost" id="hero-secondary">
+                    <i class="fas fa-play-circle"></i> Cómo funciona
+                </a>
+            </div>
+            <div class="hero-offer-card" id="hero-micro">
+                <div class="offer-icon"><i class="fas fa-gift"></i></div>
+                <p>Los primeros en unirse obtienen <strong>50% de descuento</strong> cuando lancemos.</p>
+            </div>
+            
+            <!-- Social proof -->
+            <div class="social-proof" id="social-proof">
+                <div class="social-proof-inner">
+                    <div class="avatars">
+                        <div class="avatar-circle" style="background: linear-gradient(135deg, #f472b6, #ec4899);">A</div>
+                        <div class="avatar-circle" style="background: linear-gradient(135deg, #60a5fa, #3b82f6);">M</div>
+                        <div class="avatar-circle" style="background: linear-gradient(135deg, #34d399, #10b981);">C</div>
+                        <div class="avatar-circle" style="background: linear-gradient(135deg, #fbbf24, #f59e0b);">L</div>
+                        <div class="avatar-circle extra">+2k</div>
+                    </div>
+                    <div class="proof-divider"></div>
+                    <div class="proof-text">
+                        <span class="proof-count">2,000+</span>
+                        <span class="proof-label">personas en la lista de espera</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-visual" id="hero-visual">
+            <!-- 3D Particle Heart Canvas -->
+            <canvas id="particle-heart-canvas" class="particle-heart-canvas"></canvas>
+            
+            <!-- 3D Phone Mockup -->
+            <div class="phone-3d-wrapper">
+                <div class="phone-mockup" id="phone-mockup">
+                    <div class="phone-notch"></div>
+                    <div class="phone-screen">
+                        <div class="screen-header">
+                            <span class="screen-title">Tu Top 20</span>
+                            <span class="screen-badge"><i class="fas fa-fire"></i> 20 matches</span>
+                        </div>
+                        <div class="match-cards-wrap">
+                            <div class="match-card mc-1">
+                                <div class="mc-avatar" style="background: linear-gradient(135deg, #f472b6, #db2777);"></div>
+                                <div class="mc-info">
+                                    <div class="mc-name">Valentina, 24</div>
+                                    <div class="mc-compat"><i class="fas fa-heart"></i> 94% compatible</div>
+                                </div>
+                            </div>
+                            <div class="match-card mc-2">
+                                <div class="mc-avatar" style="background: linear-gradient(135deg, #60a5fa, #2563eb);"></div>
+                                <div class="mc-info">
+                                    <div class="mc-name">Camila, 27</div>
+                                    <div class="mc-compat"><i class="fas fa-heart"></i> 91% compatible</div>
+                                </div>
+                            </div>
+                            <div class="match-card mc-3">
+                                <div class="mc-avatar" style="background: linear-gradient(135deg, #a78bfa, #7c3aed);"></div>
+                                <div class="mc-info">
+                                    <div class="mc-name">Isabella, 25</div>
+                                    <div class="mc-compat"><i class="fas fa-heart"></i> 88% compatible</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="screen-bottom-bar">
+                            <i class="fas fa-home"></i>
+                            <i class="fas fa-heart"></i>
+                            <i class="fas fa-comment"></i>
+                            <i class="fas fa-user"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- Floating notification badges -->
+                <div class="float-badge fb-1" id="fb-1">
+                    <i class="fas fa-heart"></i> Nuevo match!
+                </div>
+                <div class="float-badge fb-2" id="fb-2">
+                    <i class="fas fa-comment"></i> Te escribió...
+                </div>
+                <div class="float-badge fb-3" id="fb-3">
+                    <i class="fas fa-star"></i> Top 20 listo
+                </div>
+            </div>
+        </div>
+
+        <div class="scroll-indicator" id="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <span>Desliza para descubrir</span>
+        </div>
+    </header>
+
+    <!-- Pain Points -->
+    <section class="pain-points" id="dolor">
+        <div class="section-container">
+            <div class="section-label reveal-el"><i class="fas fa-exclamation-triangle"></i> El problema</div>
+            <h2 class="reveal-el">¿Te suena familiar?</h2>
+            <div class="cards-grid">
+                <div class="pain-card reveal-el" data-delay="0">
+                    <div class="card-icon-wrap">
+                        <i class="fas fa-infinity"></i>
+                    </div>
+                    <h3>Deslizas durante horas y no pasa nada.</h3>
+                    <p>El scroll infinito no está diseñado para que encuentres pareja. Está diseñado para que sigas deslizando.</p>
+                    <div class="card-glow"></div>
+                </div>
+                <div class="pain-card reveal-el" data-delay="150">
+                    <div class="card-icon-wrap icon-danger">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <h3>Pagas por mirar, no por resultados.</h3>
+                    <p>Suscripciones mensuales para ver quién te dio like, para deslizar más, para "boostear" tu perfil. Y al final del mes, sigues en la misma app.</p>
+                    <div class="card-glow"></div>
+                </div>
+                <div class="pain-card reveal-el" data-delay="300">
+                    <div class="card-icon-wrap icon-warning">
+                        <i class="fas fa-ghost"></i>
+                    </div>
+                    <h3>Cero conversaciones reales.</h3>
+                    <p>Cientos de matches, cero mensajes que lleguen a algo. El tiempo que inviertes no se traduce en nada.</p>
+                    <div class="card-glow"></div>
+                </div>
+            </div>
+            <div class="transition-line reveal-el">
+                <div class="transition-divider"></div>
+                <span>Nosotros construimos algo distinto</span>
+                <div class="transition-divider"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it Works -->
+    <section class="solution" id="como-funciona">
+        <div class="section-container">
+            <div class="section-label reveal-el"><i class="fas fa-wand-magic-sparkles"></i> La solución</div>
+            <h2 class="reveal-el">Así funciona Twueny</h2>
+            <div class="steps-grid">
+                <div class="step-card reveal-el" data-delay="0">
+                    <div class="step-number">01</div>
+                    <div class="step-icon"><i class="fas fa-user-pen"></i></div>
+                    <h3>Cuéntanos qué buscas</h3>
+                    <p>Completa tu perfil y tu lista de deseos: qué te importa en una persona, no solo cómo se ve.</p>
+                </div>
+                <div class="step-connector reveal-el"><i class="fas fa-arrow-right"></i></div>
+                <div class="step-card reveal-el" data-delay="200">
+                    <div class="step-number">02</div>
+                    <div class="step-icon"><i class="fas fa-wand-magic-sparkles"></i></div>
+                    <h3>Recibe tu top 20</h3>
+                    <p>En 15 minutos, nuestro algoritmo compara tu lista de deseos con la de otros usuarios y te muestra 20 personas con las que realmente encajas — en ambos sentidos.</p>
+                </div>
+                <div class="step-connector reveal-el"><i class="fas fa-arrow-right"></i></div>
+                <div class="step-card reveal-el" data-delay="400">
+                    <div class="step-number">03</div>
+                    <div class="step-icon"><i class="fas fa-paper-plane"></i></div>
+                    <h3>Escribe solo a quien quieras</h3>
+                    <p>Envía una solicitud de mensaje a cualquiera de tu top 20. Si la aceptan, empiezan a hablar. Si no, actualizamos tu lista con alguien nuevo.</p>
+                </div>
+                <div class="step-connector reveal-el"><i class="fas fa-arrow-right"></i></div>
+                <div class="step-card reveal-el" data-delay="600">
+                    <div class="step-number">04</div>
+                    <div class="step-icon"><i class="fas fa-bell"></i></div>
+                    <h3>Entérate cuando alguien te busca</h3>
+                    <p>Si apareces en el top 20 de otra persona, te avisamos. Así sabes que hay alguien interesado, sin tener que adivinar.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison -->
+    <section class="comparison" id="comparacion">
+        <div class="section-container">
+            <div class="section-label reveal-el"><i class="fas fa-scale-balanced"></i> La diferencia</div>
+            <h2 class="reveal-el">No es difícil entrar. Es difícil perder el tiempo aquí.</h2>
+            <p class="section-subtitle reveal-el">Cualquiera puede unirse. Pero no cualquiera aparece en tu top 20 — nuestro algoritmo se encarga de eso. Menos ruido, más señal.</p>
+            
+            <div class="comparison-table reveal-el">
+                <div class="comp-header">
+                    <div class="comp-col col-other">
+                        <i class="fas fa-thumbs-down"></i>
+                        <span>Apps típicas</span>
+                    </div>
+                    <div class="comp-col col-twueny">
+                        <i class="fas fa-crown"></i>
+                        <span>Twueny</span>
+                    </div>
+                </div>
+                <div class="comp-row">
+                    <div class="comp-cell cell-other">
+                        <i class="fas fa-xmark"></i> Suscripción mensual
+                    </div>
+                    <div class="comp-cell cell-twueny">
+                        <i class="fas fa-check"></i> Un solo pago, un año completo
+                    </div>
+                </div>
+                <div class="comp-row">
+                    <div class="comp-cell cell-other">
+                        <i class="fas fa-xmark"></i> Pagas para ver quién te dio like
+                    </div>
+                    <div class="comp-cell cell-twueny">
+                        <i class="fas fa-check"></i> Ves gratis quién te tiene en su top 20
+                    </div>
+                </div>
+                <div class="comp-row">
+                    <div class="comp-cell cell-other">
+                        <i class="fas fa-xmark"></i> Scroll infinito
+                    </div>
+                    <div class="comp-cell cell-twueny">
+                        <i class="fas fa-check"></i> Top 20 curado y renovado
+                    </div>
+                </div>
+                <div class="comp-row">
+                    <div class="comp-cell cell-other">
+                        <i class="fas fa-xmark"></i> Resultados en meses (si acaso)
+                    </div>
+                    <div class="comp-cell cell-twueny">
+                        <i class="fas fa-check"></i> Primeros candidatos en 15 minutos
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Waitlist -->
+    <section id="waitlist" class="cta-section">
+        <div class="cta-particles" id="cta-particles"></div>
+        <div class="cta-card reveal-el">
+            <div class="cta-glow"></div>
+            <div class="section-label"><i class="fas fa-clock"></i> Oferta por tiempo limitado</div>
+            <h2>Sé de los primeros en probarla</h2>
+            <p>Estamos por lanzar. Únete a la lista de espera hoy y asegura un <strong>50% de descuento</strong> en tu primer año, válido apenas Twueny esté disponible.</p>
+            
+            <form id="waitlist-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="email" placeholder="Correo electrónico" required>
+                    </div>
+                    <div class="form-group">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <input type="text" id="city" placeholder="Ciudad (opcional)">
+                    </div>
+                </div>
+                <button type="submit" class="btn-primary btn-glow btn-large">
+                    <i class="fas fa-gift"></i> Quiero mi 50% de descuento
+                </button>
+                <p class="microcopy"><i class="fas fa-shield-halved"></i> Sin spam. Solo te escribimos cuando la app esté lista para ti.</p>
+            </form>
+            <div id="success-message" class="hidden">
+                <div class="success-icon"><i class="fas fa-check-circle"></i></div>
+                <h3>¡Listo! Guardamos tu 50% de descuento.</h3>
+                <p>Te avisamos apenas Twueny esté disponible en tu ciudad.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq" id="faq">
+        <div class="section-container">
+            <div class="section-label reveal-el"><i class="fas fa-circle-question"></i> Preguntas frecuentes</div>
+            <h2 class="reveal-el">¿Tienes dudas?</h2>
+            <div class="accordion">
+                <div class="faq-item reveal-el" data-delay="0">
+                    <button class="faq-question">
+                        <span><i class="fas fa-coins"></i> ¿Cuánto cuesta?</span>
+                        <i class="fas fa-plus faq-toggle"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Un solo pago que te da acceso por un año completo. Sin cobros mensuales, sin sorpresas.</p>
+                    </div>
+                </div>
+                <div class="faq-item reveal-el" data-delay="100">
+                    <button class="faq-question">
+                        <span><i class="fas fa-lock"></i> ¿Por qué no es gratis como otras apps?</span>
+                        <i class="fas fa-plus faq-toggle"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Porque el pago filtra a quienes de verdad quieren conocer a alguien, no solo pasar el rato. Eso mejora la calidad de tu top 20.</p>
+                    </div>
+                </div>
+                <div class="faq-item reveal-el" data-delay="200">
+                    <button class="faq-question">
+                        <span><i class="fas fa-user-minus"></i> ¿Qué pasa si rechazo a alguien de mi top 20?</span>
+                        <i class="fas fa-plus faq-toggle"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Esa persona no se te vuelve a sugerir. Actualizamos tu lista con alguien nuevo automáticamente.</p>
+                    </div>
+                </div>
+                <div class="faq-item reveal-el" data-delay="300">
+                    <button class="faq-question">
+                        <span><i class="fas fa-calendar-check"></i> ¿Cuándo lanza la app?</span>
+                        <i class="fas fa-plus faq-toggle"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Estamos afinando los últimos detalles. Los inscritos en la lista de espera son los primeros en enterarse — y los únicos con el 50% de descuento asegurado.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <a href="/" class="logo">
+                    TWUEN<span class="logo-y">Y<svg class="logo-heart" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
+                </a>
+                <p>Encuentra personas que realmente encajan contigo.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Legal</h4>
+                <a href="#">Términos y condiciones</a>
+                <a href="#">Política de privacidad</a>
+                <a href="#">Contacto</a>
+            </div>
+            <div class="footer-social">
+                <h4>Síguenos</h4>
+                <div class="social-icons">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    <a href="#" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Twueny. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
