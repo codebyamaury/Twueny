@@ -701,33 +701,31 @@ h1 .line-1 {
     position: absolute;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.6rem 1.25rem;
+    gap: 0.6rem;
+    padding: 0.75rem 1.4rem;
     border-radius: var(--radius-full);
     font-size: 0.85rem;
     font-weight: 700;
     white-space: nowrap;
-    background: #ffffff;
+    color: #ffffff;
     z-index: 20;
     opacity: 0;
+    border: 1px solid rgba(255, 255, 255, 0.25);
 }
 .fb-1 {
     top: 60px; right: -40px;
-    border: 1px solid rgba(236, 72, 153, 0.2);
-    color: #db2777;
-    box-shadow: 0 8px 24px rgba(236, 72, 153, 0.15);
+    background: linear-gradient(135deg, #f43f5e 0%, #db2777 100%);
+    box-shadow: 0 12px 30px rgba(219, 39, 119, 0.35), inset 0 2px 4px rgba(255, 255, 255, 0.3);
 }
 .fb-2 {
     bottom: 120px; left: -60px;
-    border: 1px solid rgba(96, 165, 250, 0.2);
-    color: #2563eb;
-    box-shadow: 0 8px 24px rgba(96, 165, 250, 0.15);
+    background: linear-gradient(135deg, #60a5fa 0%, #2563eb 100%);
+    box-shadow: 0 12px 30px rgba(37, 99, 235, 0.35), inset 0 2px 4px rgba(255, 255, 255, 0.3);
 }
 .fb-3 {
     top: 200px; left: -50px;
-    border: 1px solid rgba(250, 204, 21, 0.3);
-    color: #ca8a04;
-    box-shadow: 0 8px 24px rgba(250, 204, 21, 0.15);
+    background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
+    box-shadow: 0 12px 30px rgba(217, 119, 6, 0.35), inset 0 2px 4px rgba(255, 255, 255, 0.3);
 }
 
 /* Scroll Indicator */
