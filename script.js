@@ -166,6 +166,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const heart = document.createElement('div');
         heart.innerHTML = heartSVG;
         const size = Math.random() * 24 + 12;
+        const isMobile = window.innerWidth <= 768;
+        
         heart.style.cssText = `
             position: absolute;
             bottom: -60px;
@@ -173,13 +175,15 @@ document.addEventListener('DOMContentLoaded', () => {
             width: ${size}px;
             height: ${size}px;
             opacity: 0;
-            filter: blur(${Math.random() > 0.7 ? '1px' : '0px'});
+            will-change: transform, opacity;
+            filter: ${(!isMobile && Math.random() > 0.7) ? 'blur(1px)' : 'none'};
         `;
         const color = heartColors[Math.floor(Math.random() * heartColors.length)];
         heart.querySelector('svg').style.cssText = `
             fill: ${color};
             width: 100%;
             height: 100%;
+            will-change: transform;
         `;
         heartsContainer.appendChild(heart);
 
@@ -187,7 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
         anime({
             targets: heart,
             translateY: [0, -(window.innerHeight + 150)],
-            translateX: [0, (Math.random() - 0.5) * 300],
+            translateX: [0, (Math.random() - 0.5) * (isMobile ? 150 : 300)],
             rotate: [0, (Math.random() - 0.5) * 180],
             scale: [0.5, 1.2, 0.8],
             opacity: [
@@ -196,15 +200,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 { value: 0, duration: 800, easing: 'easeInQuad' }
             ],
             duration: Math.random() * 3000 + 4000,
-            easing: 'easeOutQuad',
+            easing: 'linear', /* Linear is often faster mathematically for continuous particles */
             complete: () => heart.remove(),
         });
     }
 
-    // Spawn hearts faster
-    setInterval(createFloatingHeart, 500);
+    // Spawn hearts responsively
+    const isMobile = window.innerWidth <= 768;
+    setInterval(createFloatingHeart, isMobile ? 1200 : 500);
+    
     // Initial burst
-    for (let i = 0; i < 8; i++) setTimeout(createFloatingHeart, i * 150);
+    const burstCount = isMobile ? 3 : 8;
+    for (let i = 0; i < burstCount; i++) setTimeout(createFloatingHeart, i * 150);
 
     // ================================================
     // 5. BACKGROUND ORB ANIMATION

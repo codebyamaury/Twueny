@@ -348,6 +348,8 @@ h3 {
     border-radius: 50%;
     filter: blur(80px);
     opacity: 0.15;
+    will-change: transform;
+    transform: translateZ(0); /* Force GPU acceleration */
 }
 .orb-1 {
     width: 600px; height: 600px;
@@ -1185,27 +1187,43 @@ footer {
 
 /* ---- Responsive ---- */
 @media (max-width: 1024px) {
-    .steps-grid { gap: 1rem; }
+    .hero { gap: 4rem; }
+    .steps-grid { gap: 1.5rem; flex-wrap: wrap; }
     .step-connector { display: none; }
-    .step-card { max-width: 100%; }
+    .step-card { max-width: 48%; }
 }
 @media (max-width: 768px) {
+    .orb { filter: blur(40px); } /* Reduce expensive blur on mobile */
     .hero { flex-direction: column; text-align: center; padding-top: 6rem; gap: 3rem; }
     .hero-content { align-items: center; display: flex; flex-direction: column; }
-    .hero-actions { justify-content: center; }
+    .hero-actions { justify-content: center; flex-direction: column; width: 100%; gap: 1rem; }
+    .hero-actions .btn-primary, .hero-actions .btn-ghost { width: 100%; justify-content: center; }
+    
     .social-proof { justify-content: center; }
     .nav-links { display: none; }
-    .phone-mockup { width: 240px; height: 480px; transform: rotateY(-8deg) rotateX(3deg); }
-    .float-badge { display: none; }
+    .phone-mockup { width: 260px; height: 520px; transform: rotateY(0deg) rotateX(0deg); margin: 0 auto; }
+    .float-badge { display: none; } /* Hide complicated floating badges on small screens */
+
+    .cards-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    .step-card { max-width: 100%; }
+    
+    .comp-header { grid-template-columns: 1fr 1fr; } /* Keep comparison side-by-side but smaller */
+    .comp-row { grid-template-columns: 1fr 1fr; }
+    .comp-col, .comp-cell { padding: 1rem 0.5rem; font-size: 0.85rem; flex-direction: column; text-align: center; gap: 0.5rem; }
+    .col-other, .col-twueny { font-size: 0.95rem; }
+    
     .form-row { flex-direction: column; }
-    .footer-content { grid-template-columns: 1fr; text-align: center; }
+    #waitlist-form .btn-primary { width: 100%; justify-content: center; }
+    .cta-card { padding: 3rem 1.5rem; }
+    
+    .footer-content { grid-template-columns: 1fr; text-align: center; gap: 2rem; }
     .footer-brand { display: flex; flex-direction: column; align-items: center; }
     .footer-brand p { max-width: 100%; }
     .footer-links { align-items: center; }
     .social-icons { justify-content: center; }
-    .comp-row { grid-template-columns: 1fr; }
-    .comp-header { grid-template-columns: 1fr; }
-    .comp-cell { justify-content: center; text-align: center; }
-    .cta-card { padding: 3rem 1.5rem; }
     .microcopy { justify-content: center; text-align: center; }
+}
+@media (max-width: 480px) {
+    h2 { font-size: 2rem; }
+    .section-label { font-size: 0.75rem; padding: 0.3rem 0.8rem; }
 }
